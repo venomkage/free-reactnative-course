@@ -1,5 +1,18 @@
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
+import SinglePost from './src/Components/SinglePost';
+
+const Data = [
+  {
+    fname: 'Hey',
+  },
+  {
+    fname: 'Hii',
+  },
+  {
+    fname: 'How',
+  },
+];
 
 export default function App() {
   const [number, setNumber] = useState(0);
@@ -7,12 +20,15 @@ export default function App() {
   return (
     <View
       style={{
-        backgroundColor: 'yellow',
+        backgroundColor: 'black',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text style={{fontSize: 60, color: 'black'}}>{number}</Text>
+      {Data.map((item, index) => {
+        return <SinglePost key={index} fname={item.fname} />;
+      })}
+
       <Button title="Press me" onPress={() => setNumber(number + 1)} />
     </View>
   );
